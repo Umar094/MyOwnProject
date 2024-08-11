@@ -481,7 +481,7 @@ body.black-theme {
 .main__bird-img{
     width: 100%;
     height: 382px;
-    background-image: url(/Main-page-style/images/bird-img.png);
+    background-image: url(/images/bird-img.png);
     background-repeat: no-repeat;
     background-position: right;
     background-size: cover;
@@ -491,7 +491,7 @@ body.black-theme {
 .main__img-lion{
     width: 100%;
     height: 382px;
-    background-image: url(/Main-page-style/images/lion-img.png);
+    background-image: url(/images/lion-img.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
