@@ -1,0 +1,203 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter_28pt-Regular.ttf);
+}
+
+:root{
+    --primary-clr:hsl(216, 100%, 59%);
+    --hover-primary-clr:hsl(216, 80%, 59%);
+    --button-font-clr:hsl(0, 0%, 100%);
+
+    --hover-bk-clr: hsl(0, 0%, 98%);
+
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter, sans-serif;
+    font-size: 1.4rem;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.allWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 141px;
+}
+
+.logo{
+    width: 553px;
+    height: 170px;
+}
+
+.authorizationBtns{
+    width: 100%;
+    max-width: 406px;
+}
+
+.authorizationBtns__button{
+    width: 100%;
+    min-height: 65px;
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: 5px;
+    color: black;
+    background: none;
+    text-decoration: none;
+}
+
+.authorizationBtns__login{
+    margin-bottom: 30px;
+    border-color: var(--primary-clr);
+    color: var(--primary-clr);
+}
+
+.authorizationBtns__signup{
+    border-color: var(--primary-clr);
+    background-color: var(--primary-clr);
+    color: var(--button-font-clr);
+}
+
+.authorizationBtns__google{
+    border-color: var(--primary-clr);
+    color: var(--primary-clr);
+    gap: 19px;
+}
+
+.authorizationBtns__signup:hover{
+    background-color: var(--hover-primary-clr);
+}
+
+.authorizationBtns__google:hover,
+.authorizationBtns__login:hover{
+    background-color: var(--hover-bk-clr);
+}
+
+
+.google-icon{
+    display: inline;
+}
+
+.orTextBox{
+    margin: 51px 0;
+    display: block;
+    text-align: center;
+}
+
+.hrLine{
+    font-size: 2rem;
+    line-height: normal;
+    position: relative;
+}
+
+.hrLine::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 2px;
+    width: 167px;
+    background: black;
+}
+
+.hrLine::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 2px;
+    width: 167px;
+    background: black;
+}
+
+@media all and (max-width:538px){
+    body{
+        font-size: 1.2rem;
+        padding: 20px;
+    }
+
+    .allWrapper{
+        gap:100px;
+    }
+
+    .hrLine{
+        font-size: 1.7rem;
+    }
+}
+
+@media all and (max-width:412px){
+    .allWrapper{
+        gap:60px;
+    }
+
+    .hrLine::before{
+        width: 130px;
+    }
+    
+    .hrLine::after{
+        width: 130px;
+    }
+}
+
+
+
