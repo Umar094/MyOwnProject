@@ -79,11 +79,21 @@ body{
 }
 
 .form{
+  position: relative;
     width: 100%;
     max-width: 406px;
 }
 
-.form *:not(:last-child){
+.form__error-message{
+  position: absolute;
+  color: hsl(0, 100%, 50%);
+  text-align: center;
+  top: -82px;
+  height: 28px;
+  width: inherit;
+}
+
+.form *:not(:last-child):not(:first-child){
     margin-bottom: 30px;
 }
 
