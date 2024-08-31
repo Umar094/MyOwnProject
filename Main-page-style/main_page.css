@@ -81,6 +81,7 @@ a{
 
 :root{
     --font-color: hsl(0, 0%, 0%);
+    --line-color:hsl(0, 0%, 0%);
     --body-bk-color: hsl(0, 0%, 100%);
 
     --header-bk-clr: hsla(0, 0%, 100%, 0.5);
@@ -94,6 +95,9 @@ a{
     --button-bk-clr: hsl(0, 0%, 0%);;
     --button-text-clr: hsl(0, 0%, 100%);
     --button-font-size:1.75rem;
+    --button-hover-bk: hsl(0, 0%, 100%);
+    --button-hover-text: hsl(0, 0%, 0%);
+    --button-hover-border: hsl(0, 0%, 0%);
 
     --border-img-clr: hsl(0, 0%, 100%);
     --achievementsBlock-box-shadow-clr: hsl(0, 0%, 100%);
@@ -104,6 +108,7 @@ a{
 
 body.black-theme {
     --font-color: hsl(0, 0%, 100%);
+    --line-color:hsl(0, 0%, 100%);
     --body-bk-color: hsl(0, 0%, 0%);
 
     --header-bk-clr: hsl(0, 0%, 100%, 0.2);
@@ -112,6 +117,9 @@ body.black-theme {
 
     --button-bk-clr: hsl(0, 0%, 100%);
     --button-text-clr: hsl(0, 0%, 0%);
+    --button-hover-bk: hsl(0, 0%, 0%);
+    --button-hover-text: hsl(0, 0%, 100%);
+    --button-hover-border: hsl(0, 0%, 100%);
 
     --footer-bk-clr: hsl(0, 0%, 0%);
 
@@ -127,8 +135,7 @@ body.black-theme {
 }
 
 .header {
-    position: relative;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     height: 80px;
@@ -181,12 +188,6 @@ body.black-theme {
     margin-left: 95px;
 }
 
-.header__dropdown.active .header__dropdown-content{ /* header-dropdown, not burger)*/
-    transform: translateY(9px);
-    opacity: 1;
-    pointer-events: auto;
-}
-
 .header__drop-btn{
     font-size: var(--header-font-size);
     border: none;
@@ -216,14 +217,22 @@ body.black-theme {
     opacity: 0;
     background-color: rgb(255, 255, 255);
     border-radius: 9px;
-    transition: transform 300ms;
+    transition: transform 300ms, line-height 500ms, opacity 300ms;
     overflow: hidden;
     box-shadow: 0px 2px 10px 0 rgb(0, 0, 0, 0.2);
+    line-height: 0;
+}
+
+.header__dropdown.active .header__dropdown-content{ /* header-dropdown, not burger)*/
+    transform: translateY(9px);
+    opacity: 1;
+    pointer-events: auto;
+    line-height: 3;
 }
 
 .header__dropdown__box-content{
     position: relative;
-    padding:14px 30px;
+    padding:0 30px;
 }
 
 .header__dropdown__box-content::after{
@@ -232,16 +241,16 @@ body.black-theme {
     display: block;
     bottom: 0;
     left: 0;
-    opacity: 0;
+    transform: scaleX(0);
     height: 2px;
-    width: 0%;
+    width: 100%;
     background-color: black;
-    transition: width 300ms ease-in;
+    transition: transform 300ms;
+
 }
 
 .header__dropdown__box-content:hover::after{
-    opacity: 1;
-    width: 100%;
+    transform: scaleX(1);
 }
 
 /* ---------------------------------- */
@@ -292,16 +301,15 @@ body.black-theme {
     display: block;
     bottom: 0;
     left: 0;
-    opacity: 0;
-    height: 2px;
-    width: 0%;
+    height: 2.09px;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 300ms;
     background-color: black;
-    transition: width 300ms ease-in;
 }
 
 .menu-dropdown__content-box:hover::after{
-    opacity: 1;
-    width: 100%;
+    transform: scaleX(1);
 }
 
 .gallery-dropdown__content{
@@ -311,13 +319,31 @@ body.black-theme {
 }
 
 .gallery-dropdown__box-content{
+    position: relative;
     display: block;
     padding: 10px 10px 10px 20px;
     cursor: pointer;
 }
 
+.gallery-dropdown__box-content::after{
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    height: 2.09px;
+    width: 100%;
+    transform: scaleX(0);
+    transition: transform 300ms;
+    background-color: black;
+}
+
+.gallery-dropdown__box-content:hover::after{
+    transform: scaleX(1);
+}
+
 .gallery-dropdown__box-content:hover{
-    background-color: hsl(63, 100%, 89%);
+    background-color: hsl(0, 0%, 95%);
 }
 
 .gallery-dropdown.active .gallery-dropdown__content{
@@ -371,7 +397,7 @@ body.black-theme {
 }
 
 .about__text{
-    margin: 76px 0 0 168px;
+    margin: 80px 0 0 168px;
     max-width: 536px;
     height: 100%;
 }
@@ -411,7 +437,7 @@ body.black-theme {
     align-items: center;
     width: 100%;
     min-height: 125px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--line-color);
 }
 
 .achievements__box{
@@ -463,13 +489,20 @@ body.black-theme {
     flex-direction: row-reverse;
 }
 
+.main__wrapp > div:last-child{
+    margin: 50px 0 80px 0;
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
 .main__box {
     display: flex;
+    justify-content: space-between;
     gap: 20px;
 }
 
 .main__img-box{
-    width: 50%;
+    width: 46%;
 }
 
 .main__bird-img{
@@ -497,7 +530,7 @@ body.black-theme {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    max-width: 50%;
+    max-width: 46%;
 }
 
 .tittle{
@@ -514,15 +547,21 @@ body.black-theme {
     cursor: pointer;
     border-radius: 5px;
     padding-inline: 18px;
-    border: none;
+    border: 3px solid black;
     background-color: var(--button-bk-clr);
     color: var(--button-text-clr);
     width: 100%;
     max-width: 406px;
     min-height: 65px;
     white-space: nowrap;
+    transition: background 200ms ease-in;
 }
 
+.button:hover{
+    background-color: var(--button-hover-bk);
+    color: var(--button-hover-text);
+    border-color: var(--button-hover-border);
+}
 /* ------------------------------------ */
 
 /* footer */
@@ -550,17 +589,24 @@ body.black-theme {
     column-gap: 40px;
 }
 
+.footer__box:last-child h2, a, span, button, input{
+    font-size: 1.09rem;
+}
+
+
 .footer__box:last-child{
-    width: 357px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.footer__box-tittle{
+    margin-bottom: 28px;
+    font-size: 1.7rem !important; 
 }
 
 .footer__list{
     padding: 0;
     list-style-type: none;
-}
-
-.footer__box-tittle{
-    margin-bottom: 28px;
 }
 
 .footer__list-item:not(:last-child){
@@ -632,6 +678,7 @@ body.black-theme {
     }
 
     .about__text{
+        padding-top: 80px;
         max-width: 100%;
         margin: 0;
         padding-inline: 40px;
@@ -665,14 +712,9 @@ body.black-theme {
 
     .main__box{
         gap: 0;
-        flex-direction: column;
+        flex-direction: column !important;
     }
 
-    .main__wrapp > div:nth-child(2n + 1){
-        margin: 50px 0;
-        text-align: right;
-        flex-direction: column;
-    }
 
     .main__img-box{
         width: 100%;
